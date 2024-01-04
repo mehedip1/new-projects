@@ -30,7 +30,7 @@ const bgImage = {
     width:"100%",
     height : "100%",
 };
-console.log(bgImg);
+
 const Hero = () => {
     const [imageId, setImageId] = useState(Food1);
 
@@ -52,12 +52,29 @@ const Hero = () => {
             {/* {* img section} */}
                <div className='order-1 sm:order-2 min-h-[450px] sm:min-h-[450px] flex justify-center items-center relative'>
                {/* main img section */}
-                  <div>
-                  <img src={imageId} alt="" className='w-[300px] sm:w-[450px] mx-auto' />
+                  <div className='flex items-center justify-center h-[300px] sm:h-[450px] overflow-hidden'>
+                  <img src={imageId} alt="" className='w-[300px] sm:w-[450px] mx-auto spin' />
                   </div>
                   {/* img list section */}
-                  <div>
-                    
+                  <div className='flex lg:flex-col lg:top-1/2 lg:-translate-y-1/2 lg:py-2 justify-center gap-4 absolute bottom-[0px] lg:right-10 bg-white/30 rounded-full'>
+                    {
+                        imageList.map((item) => (
+                            <img
+                                key={item.id} src={item.img}
+                                className=' max-w-[80px] h-[80px] object-contain inline-block hover:scale-105 duration-200'
+                                onClick={() => {
+                                    setImageId(
+                                        item.id === 1 ? 
+                                        Food1 : item.id === 2 ? Food2 : Food3
+                                    )
+                                }}
+                            />
+                        )
+                        )
+
+
+
+                    }
                   </div>
                </div>
             </div>
